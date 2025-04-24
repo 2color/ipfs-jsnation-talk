@@ -1,9 +1,8 @@
-# js-IPFS @ IPFS þing
+# Demystifying IPFS: A Web Developer's Guide to Content Distribution
 
-> Where we've been, where we are, where we want to get to
-
-https://achingbrain.github.io/ipfs-althing-talk/
 
 ```console
 $ md Documents/talks/js-ipfs-althing/0.md
 ```
+
+Based on [js-IPFS @ IPFS þing](https://github.com/achingbrain/ipfs-althing-talk/) by [Alex Potsides](https://github.com/achingbrain)
