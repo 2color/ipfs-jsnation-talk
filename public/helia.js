@@ -1,79 +1,32 @@
+import { verifiedFetch } from '@helia/verified-fetch'
+
 export default {
-  handler: (args, session) => {
-    session.api.print('ipfs')
-    // Do something with args and return either:
-    //  - nothing
-    //  - a string
-    //  - a promise of a string
-    //  - an Iterable of strings (e.g. an Array or other Symbol.iterator)
-    //  - an async iterable of strings
+  handler: async (args, session) => {
+    if (args._[0] === 'fetch') {
+      const res = await verifiedFetch(args._[1])
+      const obj = await res.json()
+      session.api.print(JSON.stringify(obj))
+      return
+    }
+
+    if (args._.length === 0) {
+      session.api.print(`<pre>
+Usage: helia <command>
+
+Commands:<br />
+  fetch ipfs://CID     Fetch content by CID from the IPFS network with @helia/verified-fetch
+
+Example:
+  helia fetch ipfs://baguqeeradnk3742vd3jxhurh22rgmlpcbzxvsy3vc5bzakwiktdeplwer6pa
+</pre>`)
+      return
+    }
   },
   args: {
     // The optional args object will be passed as the `opts` argument to yargs-parser.
     // See https://www.npmjs.com/package/yargs-parser#requireyargs-parserargs-opts
+    string: [
+      0, 1
+    ]
   }
-
-  // handler: async (args, session) => {
-  //   let ctx = {
-  //     print: session.api.print,
-  //     getStdin: () => {},
-  //     repoPath: () => '/home/alex/.jsipfs',
-  //     cleanup: () => {},
-  //     isDaemon: false,
-  //     ipfs: undefined
-  //   }
-
-  //   try {
-  //     await cli(args._, async (argv) => {
-  //       if (!['daemon', 'init'].includes(args._[0])) {
-  //         // @ts-expect-error argv as no properties in common
-  //         const { ipfs, isDaemon, cleanup } = await getIpfs(argv)
-
-  //         ctx = {
-  //           ...ctx,
-  //           ipfs,
-  //           isDaemon,
-  //           cleanup
-  //         }
-  //       }
-
-  //       argv.ctx = ctx
-  //     })
-  //   } catch (/** @type {any} */ err) {
-  //     // TODO: export errors from ipfs-repo to use .code constants
-  //     if (err.code === 'ERR_INVALID_REPO_VERSION') {
-  //       err.message = 'Incompatible repo version. Migration needed. Pass --migrate for automatic migration'
-  //     }
-
-  //     if (err.code === 'ERR_NOT_ENABLED') {
-  //       err.message = `no IPFS repo found in ${ctx.repoPath}.\nplease run: 'ipfs init'`
-  //     }
-
-  //     // Handle yargs errors
-  //     if (err.code === 'ERR_YARGS') {
-  //       err.yargs.showHelp()
-  //       session.api.print('\n')
-  //       session.api.print(`Error: ${err.message}`)
-  //     } else if (log.enabled) {
-  //       // Handle commands handler errors
-  //       log(err)
-  //     } else {
-  //       session.api.print(err.message)
-  //     }
-
-  //     exitCode = 1
-  //   } finally {
-  //     await ctx.cleanup()
-  //   }
-
-  //   if (args._[0] === 'daemon') {
-  //     // don't shut down the daemon process
-  //     return
-  //   }
-  // },
-  // args: {
-  //   string: [
-  //     0, 1, 2, 3, 4, 5
-  //   ]
-  // }
 }

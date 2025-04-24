@@ -2,7 +2,7 @@ import {
   createTerminal
 } from 'terminatorator'
 import md from './md.js'
-import ipfs from './ipfs.js'
+import helia from './helia.js'
 
 import slide0 from './slides/0.md?raw'
 import slide1 from './slides/1.md?raw'
@@ -36,13 +36,13 @@ createTerminal(document.getElementById('terminal'), {
     // using the `theme` command
   commands: {
     '/usr/local/bin/md': md,
-    '/usr/local/bin/ipfs': ipfs
+    '/usr/local/bin/helia': helia
   }, // see `Adding custom commands` below
   files: {
-    '~/Documents/demystifying-ipfs/0.md': {
+    '~/demystifying-ipfs/0.md': {
       content: slide0
     },
-    '~/Documents/demystifying-ipfs/1.md': {
+    '~/demystifying-ipfs/1.md': {
       content: slide1
     },
   },
