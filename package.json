@@ -8,8 +8,7 @@
     "build": "vite build public --out-dir ../dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "npm run clean && npm run build -- --base /ipfs-althing-talk ",
-    "start": "vite public",
-    "deploy": "npm run prepublish && gh-pages -d dist"
+    "start": "vite public"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +23,6 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
     "vite": "^6.3.3"
   }
 }
