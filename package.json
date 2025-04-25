@@ -6,8 +6,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "vite build public --out-dir ../dist",
+    "copy-slides": "cp -r public/slides dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:gh-pages": "npm run clean && npm run build -- --base /ipfs-jsnation-talk",
+    "build:gh-pages": "npm run clean && npm run build -- --base /ipfs-jsnation-talk && npm run copy-slides",
     "start": "vite public"
   },
   "author": "",
