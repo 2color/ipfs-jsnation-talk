@@ -1,5 +1,5 @@
 {
-  "name": "demystifying-ipfs-talk",
+  "name": "ipfs-jsnation-talk",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "clean": "rm -rf dist",
     "build": "vite build public --out-dir ../dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:gh-pages": "npm run clean && npm run build -- --base /js-nation-talk",
+    "build:gh-pages": "npm run clean && npm run build -- --base /ipfs-jsnation-talk",
     "start": "vite public"
   },
   "author": "",
