@@ -33,12 +33,7 @@ jobs:
         run: npm ci
         
       - name: Build
-        run: npm run build
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_PATH }}
+        run: npm run build  
 
       - uses: ipfs/ipfs-deploy-action@v1
         name: Deploy to IPFS
@@ -49,6 +44,13 @@ jobs:
           storacha-proof: ${{ secrets.STORACHA_PROOF }}
           github-token: ${{ github.token }}
 
+      - name: Build
+        run: npm run build:gh-pages  
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.BUILD_PATH }}
   gh-pages:
     needs: build
     runs-on: ubuntu-latest

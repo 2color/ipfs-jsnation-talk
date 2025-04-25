@@ -5,4 +5,7 @@
 $ md Documents/talks/js-ipfs-althing/0.md
 ```
 
-Based on [js-IPFS @ IPFS þing](https://github.com/achingbrain/ipfs-althing-talk/) by [Alex Potsides](https://github.com/achingbrain)
+
+## Credits
+
+This format for the talk was inspired by [js-IPFS @ IPFS þing](https://github.com/achingbrain/ipfs-althing-talk/) by [Alex Potsides](https://github.com/achingbrain)
